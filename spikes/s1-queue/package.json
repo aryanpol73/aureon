@@ -1,0 +1,21 @@
+{
+  "name": "s1-queue",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test:a": "tsx src/a-tx-enqueue.ts",
+    "test:b": "tsx src/b-crash-harness.ts",
+    "test:c": "tsx src/c-dead-letter.ts"
+  },
+  "dependencies": {
+    "pg": "^8.23.0",
+    "pg-boss": "^12.34.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.2",
+    "@types/pg": "^8.23.1",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
