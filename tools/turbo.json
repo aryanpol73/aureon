@@ -1,0 +1,13 @@
+{
+  "extends": ["//"],
+  "tasks": {
+    "test": {
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "$TURBO_ROOT$/tsconfig.base.json",
+        "$TURBO_ROOT$/eslint.config.js",
+        "$TURBO_ROOT$/.dependency-cruiser.cjs"
+      ]
+    }
+  }
+}

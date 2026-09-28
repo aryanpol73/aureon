@@ -1,8 +1,0 @@
-:8080 {
-  handle /api/* {
-    reverse_proxy host.docker.internal:3001
-  }
-  handle {
-    respond "Caddy OK" 200
-  }
-}
