@@ -2,10 +2,10 @@
   "$schema": "https://turborepo.com/schema.json",
   "tasks": {
     "typecheck": {
-      "inputs": ["src/**", "tsconfig.json", "../../tsconfig.base.json"]
+      "inputs": ["$TURBO_DEFAULT$", "$TURBO_ROOT$/tsconfig.base.json"]
     },
     "test": {
-      "inputs": ["src/**", "vitest.config.*"],
+      "inputs": ["$TURBO_DEFAULT$", "$TURBO_ROOT$/tsconfig.base.json"],
       "outputs": ["coverage/**"]
     }
   }

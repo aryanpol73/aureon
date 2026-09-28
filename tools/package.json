@@ -1,0 +1,16 @@
+{
+  "name": "@aureon/tools",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.3",
+    "dependency-cruiser": "^18.4.0",
+    "eslint": "^10.11.0",
+    "typescript": "^6.0.3",
+    "vitest": "^5.0.2"
+  }
+}
