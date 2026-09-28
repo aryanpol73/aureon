@@ -11,7 +11,13 @@ type Findings = Record<string, string[]>; // fixture path (posix, relative to it
 type Tag = '@expect-lint' | '@expect-dep';
 
 interface DepcruiseOutput {
-  summary: { violations: ReadonlyArray<{ from: string; rule: { name: string } }> };
+  summary: {
+    violations: ReadonlyArray<{
+      from: string;
+      rule: { name: string };
+      cycle?: ReadonlyArray<{ name: string }>;
+    }>;
+  };
 }
 
 const repoRoot = fileURLToPath(new URL('../../', import.meta.url));
@@ -79,6 +85,14 @@ describe('architecture rules (ADR-021)', () => {
       const rules = actual.get(from) ?? new Set<string>();
       rules.add(violation.rule.name);
       actual.set(from, rules);
+      if (violation.cycle) {
+        for (const step of violation.cycle) {
+          const stepName = toPosix(step.name);
+          const stepRules = actual.get(stepName) ?? new Set<string>();
+          stepRules.add(violation.rule.name);
+          actual.set(stepName, stepRules);
+        }
+      }
     }
     expect(normalize(actual)).toEqual(expected);
   }, 60_000);

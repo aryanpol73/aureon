@@ -45,7 +45,9 @@ describe('ManualClock', () => {
 
   it.each([-1, Number.NaN, Number.POSITIVE_INFINITY])('rejects advancing by %s', (ms) => {
     const clock = new ManualClock(start);
-    expect(() => clock.advanceBy(ms)).toThrow(RangeError);
+    expect(() => {
+      clock.advanceBy(ms);
+    }).toThrow(RangeError);
     expect(clock.now().toISOString()).toBe('2026-09-26T09:00:00.000Z');
   });
 });
